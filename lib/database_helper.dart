@@ -5,7 +5,7 @@ class Note {
   final int? id;
   final String title;
   final String content;
-  final DateTime createdTime; // 1. New Field
+  final DateTime createdTime; 
 
   Note({
     this.id, 
@@ -19,7 +19,7 @@ class Note {
       'id': id,
       'title': title,
       'content': content,
-      'time': createdTime.toIso8601String(), // 2. Convert Date to String for DB
+      'time': createdTime.toIso8601String(), 
     };
   }
 
@@ -28,7 +28,7 @@ class Note {
       id: map['id'],
       title: map['title'],
       content: map['content'],
-      createdTime: DateTime.parse(map['time']), // 3. Convert String back to Date
+      createdTime: DateTime.parse(map['time']), 
     );
   }
 }
@@ -53,7 +53,6 @@ class DatabaseHelper {
   }
 
   Future _createDB(Database db, int version) async {
-    // 4. Update the SQL Table structure to include 'time'
     await db.execute('''
     CREATE TABLE notes (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -71,7 +70,6 @@ class DatabaseHelper {
 
   Future<List<Note>> readAllNotes() async {
     final db = await instance.database;
-    // Order by time (newest first)
     final result = await db.query('notes', orderBy: 'time DESC'); 
     return result.map((json) => Note.fromMap(json)).toList();
   }

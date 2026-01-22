@@ -56,7 +56,6 @@ class _NotesPageState extends State<NotesPage> {
     });
   }
 
-  // Helper method to format date cleanly (e.g., "2023-10-25 14:30")
   String formatDate(DateTime date) {
     return "${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}";
   }
@@ -187,9 +186,6 @@ class _AddNotePageState extends State<AddNotePage> {
         id: widget.note?.id, 
         title: _titleController.text,
         content: _contentController.text,
-        // IF CREATING: Use current time
-        // IF EDITING: Keep the original time? Or update it? 
-        // Logic below: We update the time to "now" whenever you save.
         createdTime: DateTime.now(), 
       );
 
