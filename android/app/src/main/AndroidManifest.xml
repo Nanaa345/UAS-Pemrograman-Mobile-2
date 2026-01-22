@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="uas_pemrograman_mobile_2"
+        android:label="LisNotes"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
